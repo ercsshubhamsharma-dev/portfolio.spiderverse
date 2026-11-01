@@ -1,0 +1,92 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --accent-red: #e2252b;
+    --accent-blue: #00d4ff;
+    --accent-purple: #8b5cf6;
+    --canvas-bg: #08080a;
+    --surface-dark: #111116;
+    --surface-border: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--canvas-bg);
+    color: #ededef;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Bricolage Grotesque', 'Space Grotesk', sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Comic Halftone Texture */
+.halftone-bg {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.2px, transparent 1.2px);
+  background-size: 14px 14px;
+}
+
+.halftone-red {
+  background-image: radial-gradient(rgba(226, 37, 43, 0.15) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+
+.halftone-blue {
+  background-image: radial-gradient(rgba(0, 212, 255, 0.15) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+
+/* Spider-Verse Chromatic Aberration & Glitch */
+@keyframes chromatic-glitch {
+  0% {
+    text-shadow: 2px 0 var(--accent-red), -2px 0 var(--accent-blue);
+  }
+  25% {
+    text-shadow: -2px 1px var(--accent-red), 2px -1px var(--accent-blue);
+  }
+  50% {
+    text-shadow: 3px -1px var(--accent-red), -3px 1px var(--accent-blue);
+  }
+  75% {
+    text-shadow: -1px 2px var(--accent-red), 1px -2px var(--accent-blue);
+  }
+  100% {
+    text-shadow: 2px 0 var(--accent-red), -2px 0 var(--accent-blue);
+  }
+}
+
+.hover-glitch:hover {
+  animation: chromatic-glitch 0.28s steps(2, start) infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #08080a;
+}
+::-webkit-scrollbar-thumb {
+  background: #23232b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e2252b;
+}
+
+/* Web strand pulse */
+@keyframes web-shimmer {
+  0%, 100% { opacity: 0.2; stroke-dashoffset: 0; }
+  50% { opacity: 0.7; stroke-dashoffset: 40; }
+}
+
+.animate-web {
+  animation: web-shimmer 4s ease-in-out infinite;
+}
